@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { AmazonMembership, CartContext, FacebookMembership, MicrosoftMembership, NoneMembership } from '../context/CartContext';
 
 const Cart = () => {
-  const { cartGroups, addToCart, removeFromCart, setCartMembership, cartMembership, onCartChanged, calculateTotal } = React.useContext(CartContext) as CartContextType;
+  const { cartItems, increaseProduct, decreaseProduct, setCartMembership, cartMembership, calculateTotal } = React.useContext(CartContext) as CartContextType;
 
   const handlePrivilegeChanged = (event: SelectChangeEvent<string>) => {
     const {
@@ -53,8 +53,8 @@ const Cart = () => {
           </Grid>
         </Grid>
       </Box>
-      {cartGroups.map((item: ICartGroup) => (
-        <CartItem key={item.id} cartGroup={item} onCartChanged={onCartChanged} />
+      {cartItems.map((item: ICartItem) => (
+        <CartItem key={item.id} increaseProduct={increaseProduct} decreaseProduct={decreaseProduct} cartItem={item} />
       ))}
       <Box sx={{ minWidth: 120, marginTop: 5 }}>
         <Paper elevation={0}>

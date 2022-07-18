@@ -1,10 +1,9 @@
-// type ProductType = {
-//     name: string;
-//     description: string;
-//     originalPrice: number;
-// }
+type ProductType = {
+    name: string;
+    description: string;
+    originalPrice: number;
+}
 
-type ProductType = "SMALL_PIZZA_PRODUCT" | "MEDIUM_PIZZA_PRODUCT" | "LARGE_PIZZA_PRODUCT";
 type DiscountFormulaType = "DEFAULT_COMMON" | "BUY_X_GET_Y" | "REDUCE_Y_CASH_PER_X_PRODUCT";
 
 type CalculateFormula = {
@@ -22,7 +21,7 @@ type DiscountProgram = {
     valueX: number;
     valueY: number;
 
-    // appliedFormular: CalculateFormula;
+    appliedFormular: CalculateFormula;
 }
 
 type IDiscountProgram = {
@@ -77,16 +76,15 @@ interface CartProviderProps {
 
 type CartContextType = {
     cartItems: ICartItem[];
-    cartGroups: ICartGroup[];
 
-    // increaseProduct: (cartItem: ICartItem) => void;
-    // decreaseProduct: (cartItem: ICartItem) => void;
+    increaseProduct: (cartItem: ICartItem) => void;
+    decreaseProduct: (cartItem: ICartItem) => void;
 
-    addToCart: (cartGroup: ICartGroup) => void;
-    removeFromCart: (cartGroup: ICartGroup) => void;
-
-    setCartMembership: (membership) => void;
-    cartMembership: Membership;
-    onCartChanged: () => void;
     calculateTotal: () => number;
+    cartMembership: Membership;
+    setCartMembership: (membership: Membership) => void;
+}
+
+interface ICart {
+    products: ProductType[];
 }
